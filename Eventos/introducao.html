@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container2 {
+            background-color: gray;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>EVENTOS</h1>
+<div class="container">
+    <button id="btn1">BOTÃO 1</button> <br><br>
+    <button id="btn2">BOTÃO 2</button> <br><br>
+    <button id="btn3">BOTÃO 3</button> <br><br>
+    <button id="btn4">BOTÃO 4</button> <br><br>
+</div>   
+<hr>
+    <h1>DELEGAÇÃO DE EVENTOS</h1>
+<div class="container2">
+    <button >BOTÃO 1</button>
+    <button >BOTÃO 2</button> 
+    <button >BOTÃO 3</button> 
+</div>
+    
+    <script>
+        const btn1 = document.querySelector("#btn1")
+        const btn2 = document.querySelector("#btn2")
+        const btn3 = document.querySelector("#btn3")
+        const btn4 = document.querySelector("#btn4")
+
+        btn1.onclick = function(){
+            console.log("click btn1 com .onclick")
+        }
+        btn1.onclick = clicou
+
+        function clicou(){
+            console.log("click funcao clicou")
+        }
+
+        btn2.addEventListener("click", function(){
+            document.body.insertAdjacentHTML("afterend", "<b> ola mundo <b>")
+        })
+
+        btn3.addEventListener("click", function(){
+            console.log("click btn3 função")
+        })
+        btn3.addEventListener("click", function(){
+            console.log("click novo")
+        })
+        btn3.onclick = clicou
+
+        btn4.addEventListener("click", function(event){
+            console.log(event) //objeto evento
+            event.stopPropagation()
+            console.log("clicou no btn4")
+        }, false)
+
+        document.addEventListener("click", function(e){
+            console.log(e.target)
+            console.log(e.currentTarget)
+            console.log(this)
+        }, false)  // o true no final indica que vai ser executado na fase de captura, não de borbulhamento. (na fase de "ida")
+        
+        const container = document.querySelector(".container")
+
+        container.addEventListener("click", function(){
+            console.log("clicou no container")
+        }, false)
+
+        //DELEGAÇÃO DE EVENTOS
+
+        const container2 = document.querySelector(".container2")
+        const btns = document.querySelectorAll(".container2 button")
+        console.log(btns);
+        // [...btns].forEach(function(btn){
+        //     btn.addEventListener("click", function(e){
+        //         e.stopPropagation()
+        //         console.log(e.target)
+        //     })
+        // })
+
+        container2.addEventListener("click", function(e){
+                console.log(e.target)
+                console.log(e.currentTarget) //currentTarget é o elemento ao qual a função foi atrelada, nesse caso, 
+                console.log(this)                                    //o proprio container2
+                if(e.target.nodeName === "BUTTON"){   
+                // console.log(e.target)
+            }
+        })
+    </script>
+</body>
+</html>

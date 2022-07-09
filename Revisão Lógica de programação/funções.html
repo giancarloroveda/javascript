@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Funções</h1>
+
+    <script>
+
+        //Declaração de função
+        function ola(){
+            document.write("Olá mundo!<br><br>")
+        }
+
+        ola()
+
+        //Expressão de função
+        const ola2 = function(){
+            console.log("ola mundo de function expression")
+        }
+
+        ola2()
+
+        //Arrow functions
+        const ola3 = () => {
+            console.log("ola mundo de arrow functions")
+        }
+        
+        ola3()
+
+        //Retorno de valores
+        function obtemDiaSemana(){
+             return new Date().getDay()
+        }
+
+        let dia = obtemDiaSemana()
+        console.log(dia)
+
+        switch(dia){
+            case 1:
+                document.write("Hoje é segunda!")
+                break
+            case 2:
+                document.write("Hoje é terça!")    
+                break
+            case 3:
+                document.write("Hoje é quarta!")  
+                break  
+            case 4:    
+                document.write("Hoje é quinta!")
+                break
+            case 5:    
+                document.write("Hoje é sexta!") 
+                break
+            case 6:    
+                document.write("Hoje é sábado!") 
+                break  
+            case 7:    
+                document.write("Hoje é domingo!")
+        }
+
+        
+        function somar(n1, n2){
+            n1 = n1 || 0
+            n2 = n2 || 0 
+            return n1 + n2
+        }
+        let soma = somar(3, 5)
+        console.log(soma)
+        console.log(somar(12.5, 10.3))
+        console.log(somar(10))
+        console.log(somar(3, 5, 7))
+        console.log(somar())
+    
+
+
+
+    </script>
+
+    
+</body>
+</html>

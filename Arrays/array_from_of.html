@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque quidem id sint laboriosam eaque adipisci ducimus, quis perspiciatis inventore officiis possimus saepe, veniam sed quibusdam, neque dolor facere cupiditate eveniet.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque quidem id sint laboriosam eaque adipisci ducimus, quis perspiciatis inventore officiis possimus saepe, veniam sed quibusdam, neque dolor facere cupiditate eveniet.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque quidem id sint laboriosam eaque adipisci ducimus, quis perspiciatis inventore officiis possimus saepe, veniam sed quibusdam, neque dolor facere cupiditate eveniet.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque quidem id sint laboriosam eaque adipisci ducimus, quis perspiciatis inventore officiis possimus saepe, veniam sed quibusdam, neque dolor facere cupiditate eveniet.</p>
+    
+    <script>
+
+        let arr = new Array(3, 5, 8)
+        
+        let arr1 = Array.from(arr)
+        console.log(arr1)
+        arr1.map(function(el, i){
+            arr1[i] = el * 2
+        })
+        console.log(arr)
+        console.log(arr1)
+        
+        let paragrafos = document.querySelectorAll("p")
+        let arrayParagrafos = Array.from(paragrafos)
+        
+        console.log(paragrafos)
+        console.log(arrayParagrafos)
+        
+
+        arrayParagrafos.map(function(p, i){
+            console.log(p)
+            console.log(i)
+            p.textContent = `${++i} - ${p.textContent}`
+        })
+        console.log(paragrafos)
+        console.log(arrayParagrafos)
+        
+        
+
+    </script>
+    
+</body>
+</html>
+

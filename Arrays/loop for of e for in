@@ -1,0 +1,28 @@
+// for in
+
+const arr = [5, 10, 20]
+console.log(arr)
+for(let p in arr){ //p = indice dentro da variavel
+    let mult = arr[p]
+    console.log(p)
+    console.log(arr[p])
+}
+
+const obj = {
+    nome: "Maria",
+    idade: 28,
+    email: "maria@server.com"
+}
+for(let prop in obj){ // prop = propriedade do objeto
+    console.log(prop)
+    console.log(obj[prop])
+}
+
+
+// for of
+
+for(n of arr){ //n = elemento do objeto
+    console.log(n)
+}
+
+

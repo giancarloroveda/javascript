@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/formulario.css">
+
+</head>
+<body>
+    
+    <div class="formCadastro__app">
+
+        <div class="formCadastro__container">
+            <h1 class="heading">Cadastre uma tarefa</h1>
+
+            <form action="#" class="formCadastro" id="shopping-add">
+                <label for="txtTitulo" >
+                    Título
+                </label>
+                <input id="txtTitulo" type="text" name ="txtTitulo">
+
+                <label for="txtDescricao" >
+                    Descrição da tarefa
+                </label>
+                <textarea id="txtDescricao" rows="5" maxlength="255"></textarea>
+                <div id="contador" style="display: none"> <span></span> caracteres</div>
+
+                <label>
+                    <input type="checkbox" name="" id="chkAceito">
+                    Comprometo-me a entregar esta tarefa o quanto antes
+                </label>
+
+                <input id="btn" type="submit" value="Adicionar">
+
+            </form>
+        </div>
+
+        <div id="feedbackMessage">
+            <p>aa</p>
+            <button><span class="fa fa-close"></span></button>
+            
+        </div>
+
+        
+    
+    </div>
+
+    <script>
+        const checkbox = document.getElementById("chkAceito")
+
+        const btnAdicionar = document.getElementById("btn")
+        btnAdicionar.disabled = true
+
+        const txtTitle = document.getElementById("txtTitulo")
+
+        const formulario = document.querySelector(".formCadastro")
+
+        checkbox.addEventListener("change", function(){
+            // if(this.checked){
+            //     btnAdicionar.disabled = false
+            // } else {
+            //     btnAdicionar.disabled = true
+            // }
+            btnAdicionar.disabled = !this.checked
+        })
+
+        formulario.addEventListener("submit", function(e){
+            if(txtTitle.value === ""){
+                showErrorMessage("Você deve preencher todas as lacunas")
+                e.preventDefault()
+            }
+        })
+
+        const textArea = document.getElementById("txtDescricao")
+        const countContainer = document.querySelector("#contador")
+        const resta = document.querySelector("#contador span")
+        const maxima = textArea.maxLength
+        // countContainer.removeAttribute("style")
+        countContainer.style.display = "block"
+        // resta.textContent = maxima
+        mostrarCaracteres(maxima)
+        
+        textArea.addEventListener("input", function(){
+            let numeroLetrasDigitadas = this.value.length
+            let caracteresRestantes = parseInt(maxima) - parseInt(numeroLetrasDigitadas)
+            // resta.textContent = caracteresRestantes
+            mostrarCaracteres(caracteresRestantes)
+        })
+
+        function mostrarCaracteres(n){
+            resta.textContent = n
+        }
+        
+        const divError = document.querySelector("#feedbackMessage")
+        const pError = divError.querySelector("p")
+
+        function showErrorMessage(msg){
+            pError.textContent = msg
+            divError.classList.add("show")
+            btnCloseError.focus()
+        }
+
+        const btnCloseError = divError.querySelector("button")
+
+        btnCloseError.addEventListener("click", function(){
+            divError.classList.remove("show")
+            txtTitle.focus()
+        })
+
+        btnCloseError.addEventListener("keyup", function(e){
+            (e.keyCode === 27) && divError.classList.remove("show")
+            (e.keyCode === 27) && txtTitle.focus()
+        })
+        
+        
+
+       
+
+        
+
+    </script>
+
+</body>
+</html>

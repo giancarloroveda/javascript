@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container2 {
+            background: gray;
+            padding: 15px;
+        }
+        .container2 p {
+            border: 1px solid red;
+            padding: 10px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>teste DOM</h1>
+
+    <div class="container2">
+        <p>paragrafo 1</p>
+        <p>paragrafo 2</p>
+        <p>paragrafo 3</p>
+    </div>
+
+
+    <div class="container">
+        <p>teste1</p>
+        <p>lorem <a href="#"> link </a>.</p>
+        <p>teste 2</p>
+
+        <h2>Lista</h2>
+        <ul>
+            <li>item 1</li>
+            <li>item 2
+                <ul>
+                    <li>item 2.a</li>
+                    <li>item 2.b</li>
+                    <li>item 2.c</li>
+                </ul>
+            </li>
+            <li>item <a href="#">link</a></li>    
+        </ul>
+        <p></p>
+    </div>
+    
+    <script>
+       
+       const title = document.createElement("h1")
+       const atributo = document.createAttribute("id")
+       atributo.value = "título"
+
+       title.setAttributeNode(atributo)
+
+       title.setAttribute("class", "titulo")
+
+       title.setAttribute("style", "color: yellow")
+
+       const text = document.createTextNode("Texto inserido no DOM")
+       title.appendChild(text)
+       title.textContent += " e Texto inserido com textContent"
+       console.log(title)
+
+    //    document.querySelector(".container").appendChild(title)
+    const paragrafo = document.createElement("p")
+    paragrafo.textContent = "ola"
+    document.querySelector(".container").append(title, "texto novo com append")
+    document.querySelector(".container").prepend("texto novo com prepend", paragrafo)
+
+    let sublevel = document.querySelector("ul ul").cloneNode(true)
+
+    const h2 = document.querySelector("h2")
+
+    const container = document.querySelector(".container")
+
+    container.insertBefore(sublevel, h2.nextElementSibling)
+
+    const mensagemFeliz = document.createTextNode("BOM DIA AMIGUINHO")
+    
+    const checkbox = document.createElement("input")
+    checkbox.setAttribute("type", "checkbox")
+    container.before(mensagemFeliz, " outro texto")
+    container.after("TCHAU", checkbox)
+
+    // insert
+
+    const container2 = document.querySelector(".container2")
+
+    container2.insertAdjacentHTML("beforebegin", "<b> texto inserido 1 </b>") //adicionar strings com tags HTML
+    container2.insertAdjacentHTML("afterbegin", "<b> texto inserido 2 </b>")
+    container2.insertAdjacentHTML("beforeend", "<b> texto inserido 3 </b>")
+    container2.insertAdjacentHTML("afterend", "<b> texto inserido 4 </b>")
+
+    container2.insertAdjacentText("beforebegin", "inserido com insertAdjacentText") //adicionar strings
+
+    const em = document.createElement("em")
+    em.textContent = "texto com ênfase"
+    
+    container2.insertAdjacentElement("beforeend", em) //adicionar nós (nodes)
+
+    //remove(), removeChild(child), replaceChild(newChild, oldChild)
+    container2.remove()
+    // container2.parentNode.removeChild(container2)
+    const h1 = document.querySelector("h1")
+    const h1_2 = document.createElement("h1")
+    h1_2.textContent = "TITLE 2"
+
+    const parent = document.body
+
+    parent.replaceChild(h1_2, h1)
+
+    
+
+
+    
+    </script>
+</body>
+</html>
