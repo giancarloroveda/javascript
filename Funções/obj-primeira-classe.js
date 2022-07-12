@@ -38,7 +38,7 @@ console.log(funcao2(2))
 function fn3(){
     fn3.count++
     return function _fn3(){
-        console.log("função retornada por parâmetro")
+        console.log("função retornada por outra função")
     }
 }
 fn3.count = 0
@@ -48,4 +48,5 @@ funcao3()
 fn3()
 fn3()
 console.log(funcao3.name)
+console.log(fn3.name)
 console.log(fn3.count)
