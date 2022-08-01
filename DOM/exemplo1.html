@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Curso Javascript Completo 2018</title>
+    <meta charset="utf-8">
+
+
+
+</head>
+
+<body>
+    <h1 id="title1">Curso Javascript Completo 2018</h1>
+
+    <main class="cmain" id="idmain">
+        <h2>subtitulo</h2>
+        <p id="p1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+    </main>
+
+    <section class="csection" id="idsection">
+        <h3>subtitulo</h3>
+        <p class="paragrafo2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+        <p class="paragrafo2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+    </section>
+    <script>
+        (function(){
+            const novoElemento = document.createElement("p")
+            novoElemento.innerHTML = "novo paragrafo"
+            document.querySelector("#idmain").insertBefore(novoElemento, document.querySelector("#p1"))
+        })()
+    </script>
+
+</body>
+
+</html>
