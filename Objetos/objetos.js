@@ -18,3 +18,11 @@ const str2 = new String("objeto do tipo string")
 console.log(str2)
 console.log(str2.length)
 console.log(str2.valueOf())
+
+const data1 = Date()
+console.log(data1)
+console.log(typeof data1)
+
+const data2 = new Date()
+console.log(data2)
+console.log(typeof data2)
