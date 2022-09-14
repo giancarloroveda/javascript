@@ -1,6 +1,5 @@
 function Task(name) {
     "use strict"
-    console.log(this)
     let _name = name
     this.createdAt = new Date()
     this.updatedAt = null
@@ -13,7 +12,6 @@ function Task(name) {
             this.updatedAt = new Date()
         }
     }
-    console.log(this)
 }
 
 // const task1 = new Task('task 1')
