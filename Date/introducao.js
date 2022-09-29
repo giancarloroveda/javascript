@@ -9,3 +9,7 @@ console.log(data.getHours()) // hora
 console.log(data.getUTCHours()) // hora no UTC 0
 console.log(data.getMinutes()) //minutos (tem pra segundos e milisegundos e todos tem a versao em UTC)
 console.log(new Date(1969, 4, 11, 6, 30, 20, 8)) // ano, mês, dia, hora, minuto, segundo, milissegundo
+
+// o valor da constante data foi setado na hora em que ela foi definida, e pode ser mudado utilizando metodos do tipo setDay,
+// todos os metodos apresentados acima tem sua "versão set".
+
