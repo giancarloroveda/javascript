@@ -18,30 +18,45 @@
         return actualDate
     }
 
-    reloadDate(getDateSpan())
 
-    function reloadDate(date){
-        const p = document.createElement('p')
-        let left = (date.getTime()) - (new Date().getTime())
+    const ONE_SECOND = 1000
+    const ONE_MINUTE = 1000 * 60
+    const ONE_HOUR = 1000 * 60 * 60
+    const ONE_DAY = 1000 * 24 * 60 * 60
 
-        const ONE_DAY = 1000 * 24 * 60 * 60
-        const daysLeft = parseInt(left / ONE_DAY)
+    const p = document.createElement('p')
+    document.querySelector('.hero-content').appendChild(p)
+
+
+    function reloadDate(){
+        const spanDate = getDateSpan()
+        
+        let left = (spanDate.getTime()) - (new Date().getTime())
+        
+        
+        let daysLeft = parseInt(left / ONE_DAY)
         left = left - daysLeft * ONE_DAY
 
-        const ONE_HOUR = 1000 * 60 * 60
-        const hoursLeft = parseInt(left / ONE_HOUR)
+        
+        let hoursLeft = parseInt(left / ONE_HOUR)
         left = left - hoursLeft * ONE_HOUR
 
-        const ONE_MINUTE = 1000 * 60
-        const minutesLeft = parseInt(left / ONE_MINUTE)
+        
+        let minutesLeft = parseInt(left / ONE_MINUTE)
         left = left - minutesLeft * ONE_MINUTE
 
-        const ONE_SECOND = 1000
-        const secondsLeft = parseInt(left / ONE_SECOND)
-
-        p.textContent = `Contagem regressiva: ${daysLeft} dias, ${hoursLeft} horas, ${minutesLeft}, minutos e ${secondsLeft} segundos.`
-        document.querySelector('.hero-content').appendChild(p)
+        
+        let secondsLeft = parseInt(left / ONE_SECOND)
+        
+        p.textContent = `Contagem regressiva: ${daysLeft} dias, ${hoursLeft} horas, ${minutesLeft} minutos, ${secondsLeft} segundos.`
+        
     }
+
+
+
+
+    reloadDate()
+    setInterval(reloadDate, 1000)
 
     
 })()
