@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="https://www.freecodecamp.org/news/content/images/2022/08/pexels-antonio-batinic--4164418--1-.jpg" alt="javascript">
+    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quia maxime numquam rem harum! Maiores unde obcaecati eveniet voluptatum hic fuga? Cupiditate repellendus obcaecati dicta non sapiente culpa tempore facilis.</h1>
+    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quia maxime numquam rem harum! Maiores unde obcaecati eveniet voluptatum hic fuga? Cupiditate repellendus obcaecati dicta non sapiente culpa tempore facilis.</h1>
+    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quia maxime numquam rem harum! Maiores unde obcaecati eveniet voluptatum hic fuga? Cupiditate repellendus obcaecati dicta non sapiente culpa tempore facilis.</h1>
+    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quia maxime numquam rem harum! Maiores unde obcaecati eveniet voluptatum hic fuga? Cupiditate repellendus obcaecati dicta non sapiente culpa tempore facilis.</h1>
+    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quia maxime numquam rem harum! Maiores unde obcaecati eveniet voluptatum hic fuga? Cupiditate repellendus obcaecati dicta non sapiente culpa tempore facilis.</h1>
+    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quia maxime numquam rem harum! Maiores unde obcaecati eveniet voluptatum hic fuga? Cupiditate repellendus obcaecati dicta non sapiente culpa tempore facilis.</h1>
+    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quia maxime numquam rem harum! Maiores unde obcaecati eveniet voluptatum hic fuga? Cupiditate repellendus obcaecati dicta non sapiente culpa tempore facilis.</h1>
+    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quia maxime numquam rem harum! Maiores unde obcaecati eveniet voluptatum hic fuga? Cupiditate repellendus obcaecati dicta non sapiente culpa tempore facilis.</h1>
+    <hr>
+    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quia maxime numquam rem harum! Maiores unde obcaecati eveniet voluptatum hic fuga? Cupiditate repellendus obcaecati dicta non sapiente culpa tempore facilis.</h1>
+    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quia maxime numquam rem harum! Maiores unde obcaecati eveniet voluptatum hic fuga? Cupiditate repellendus obcaecati dicta non sapiente culpa tempore facilis.</h1>
+    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quia maxime numquam rem harum! Maiores unde obcaecati eveniet voluptatum hic fuga? Cupiditate repellendus obcaecati dicta non sapiente culpa tempore facilis.</h1>
+    <script>
+
+        // scrollTo(x, y) vai até certa coordenada de scroll.
+        // scrollBy(x, y) soma os valores ao scroll atual
+        // pageXOffset retorna onde está no momento horizontalmente
+        // pageYOffset retorna onde está no momento verticalmente
+
+        window.addEventListener('load', function(){
+            console.log('load')
+        }) // só é disparado quando todos os assets da pagina estiverem carregados.
+        window.addEventListener('DOMContentLoaded', function(){
+            console.log('DOMContentLoaded')
+        }) // é disparado logo após a disponibilização dos elementos do DOM para manipulação.
+        window.addEventListener('resize', function(){
+            console.log("resize", innerHeight, innerWidth)
+        })
+        window.addEventListener('scroll', function(){
+            console.log("scroll", pageYOffset, pageXOffset)
+        })
+        window.addEventListener('unload', function(){
+            console.log("unload")
+            debugger
+        })
+        window.addEventListener('beforeunload', function(){
+            console.log("beforeunload")
+            debugger
+        })
+        
+    </script>
+</body>
+</html>
