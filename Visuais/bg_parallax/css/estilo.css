@@ -63,6 +63,7 @@ main{
     width: 32%;
     float: left;
     box-sizing: border-box;
+    
 }
 .card-1, .card-2{
     margin-right: 2%;
