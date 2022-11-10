@@ -19,7 +19,9 @@ function Cachorro(nome, tipo){
         value: Cachorro,
         enumerable: false
     })
+    
 }
+
 
 Cachorro.prototype = new Animal()
 
