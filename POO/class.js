@@ -5,12 +5,14 @@ function Animal(tipo){
 }
 
 Animal.prototype.obterTipo = function(){
-    return this
+    return this.tipo
 }
 
 let cachorro = new Animal("mamífero")
 let gato = new Animal("mamífero")
 let cobra = new Animal("reptil")
+
+console.log(cachorro.obterTipo())
 
 
 //ES6
