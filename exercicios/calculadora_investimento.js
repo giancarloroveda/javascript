@@ -1,11 +1,20 @@
 (function(){
-    function calcularInvestimento(valorMes, tempo, porcentagemAA, impostoDeRendaAA) {
-        let patrimonio = 0
-
+    function calcularInvestimento(valorMes, tempo, porcentagemAA, impostoDeRendaAA, patrimonioInicial) {
+        
+        
         valorMes = parseFloat(valorMes.replaceAll(',', '.'))
         tempo = parseFloat(tempo.replaceAll(',', '.'))
         porcentagemAA = parseFloat(porcentagemAA.replaceAll(',', '.'))
         impostoDeRendaAA = parseFloat(impostoDeRendaAA.replaceAll(',', '.'))
+        
+        let patrimonio = 0
+        
+        if(patrimonioInicial){
+            patrimonioInicial = parseFloat(patrimonioInicial.replaceAll(',', '.'))
+            patrimonio = patrimonioInicial
+        }
+
+        
     
         for(let i = tempo;i > 0; i--){
             let dinheiroGanhoNoAno = 0
@@ -26,7 +35,7 @@
     const form = document.querySelector('#form')
     const inputValorMes = document.querySelector('#iValorMes')
    
-    
+    const inputPtrIni = document.querySelector('#ipatriInicial')
     const inputTempo = document.querySelector('#itempo')
     const inputRendimento = document.querySelector("#irendimento")
     const inputImposto = document.querySelector('#iimposto')
@@ -36,11 +45,11 @@
 
     btnEnviar.addEventListener('click', function(e){
         e.preventDefault()
-        calcularInvestimento(inputValorMes.value, inputTempo.value, inputRendimento.value, inputImposto.value)
+        
         
         console.log(calcularInvestimento(inputValorMes.value, inputTempo.value, inputRendimento.value, inputImposto.value))
 
-        output.innerText = `Patrimônio Final: ${calcularInvestimento(inputValorMes.value, inputTempo.value, inputRendimento.value, inputImposto.value)}`
+        output.innerText = `Patrimônio Final: ${calcularInvestimento(inputValorMes.value, inputTempo.value, inputRendimento.value, inputImposto.value, inputPtrIni.value)}`
     })
 
     btnLimpar.addEventListener("click", function(e){
