@@ -54,10 +54,12 @@
 
     btnLimpar.addEventListener("click", function(e){
         e.preventDefault()
+        inputPtrIni.value = ''
         inputValorMes.value = ''
         inputTempo.value = ''
         inputRendimento.value = ''
         inputImposto.value = ''
+        output.innerText = "Patrimônio Final:"
     })
 })()
 
