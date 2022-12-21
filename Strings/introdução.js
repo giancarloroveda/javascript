@@ -6,7 +6,7 @@ let str1 = "Minha String"
 // console.log(str1.indexOf('i'))
 // console.log(str1.lastIndexOf('i'))
 // console.log(str1.indexOf('dasdasd'))
-console.log(str1.includes())
+console.log(str1.includes('Minha', 0))
 // console.log(str1.indexOf('minha') >= 0)
 
 console.log(str1.slice(0, 5))

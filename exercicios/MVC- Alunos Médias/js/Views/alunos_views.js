@@ -1,9 +1,9 @@
 class AlunosView {
-    constructor(table){
+    constructor(table, materias){
         this.tableList = table
         this.tableHeader = this.tableList.querySelector('thead')
         this.tableBody = this.tableList.querySelector('tbody')
-        this.materias = ["portugues", "matematica", "historia", "ciencias"]
+        this.materias = materias
 
         this.renderHeader()
     }
@@ -13,7 +13,7 @@ class AlunosView {
         alunos.forEach(aluno => {
             let trAluno = document.createElement('tr')
             
-            trAluno.innerHTML = `<td>${aluno.nome}</td>`
+            trAluno.innerHTML = `<td><a href="edit.html?id=${aluno._id}" id="nome_aluno">${aluno.nome}</a></td>`
 
             let encontrado = false
             this.materias.forEach(materia => {
@@ -33,7 +33,7 @@ class AlunosView {
             } else {
                 htmlMediasAluno = this.materias.map(materia => {
                     return `<td>
-                    ${aluno.medias[materia] !== undefined ? aluno.medias[materia] : `<a href="edit.html?id=${aluno._id}"> Incluir Nota</a>`}
+                    ${aluno.medias[materia] !== undefined && aluno.medias[materia] !== null ? aluno.medias[materia] : `<a href="edit.html?id=${aluno._id}"> Incluir notas</a>`}
                     </td>`
                 }).join('')
             }

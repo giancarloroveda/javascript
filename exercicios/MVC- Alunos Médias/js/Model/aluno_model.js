@@ -10,14 +10,21 @@ class AlunoModel {
 
         this.medias = {}
 
+        this.generateAverage()
+    }
+
+    generateId(){
+        AlunoModel.maxId++
+        localStorage.setItem('maxId', JSON.stringify(AlunoModel.maxId))
+        return AlunoModel.maxId
+    }
+
+    generateAverage(){
         for (let materia in this.notas) {
             this.medias[materia] = average(...this.notas[materia])
         }
     }
 
-    generateId(){
-        return AlunoModel.maxId + 1
-    }
 }
 
-AlunoModel.maxId = 0
+AlunoModel.maxId = JSON.parse(localStorage.getItem('maxId'))
