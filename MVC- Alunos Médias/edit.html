@@ -115,7 +115,7 @@
       const alunosService = new AlunosServices()
 
       const URLParams = new URLSearchParams(location.search)
-        
+      
       const id = parseInt(URLParams.get('id'))
      
       const aluno = alunosService.searchById(id)
