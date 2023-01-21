@@ -1,4 +1,4 @@
-export function Task(title, completed, createdAt, updatedAt) {
+export function Task(title, completed, createdAt, updatedAt, id) {
     // crie uma funcao construtora chamada Task. 
     // essa funcao recebe por parametro obrigatório o nome da tarefa
     // também recebe tres parametros opcionais (completed, createdAt, updatedAt)
@@ -12,7 +12,8 @@ export function Task(title, completed, createdAt, updatedAt) {
         throw new Error("Task need a required parameter: title")
     }
     let _title = title
-    // this.title = title
+    this.title = title
+    this.id = id || null
     this.completed = completed || false
     this.createdAt = createdAt || Date.now()
     this.updatedAt = updatedAt || null
