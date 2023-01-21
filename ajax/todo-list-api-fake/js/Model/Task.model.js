@@ -8,7 +8,6 @@ export function Task(title, completed, createdAt, updatedAt) {
     //  - createdAt - timestamp - opcional, timestamp atual é o valor default)  Date.now()
     //  - updatedAt - timestamp - opcional, null é o valor default
     // o objeto retornado por essa funcao deve ter um método chamado toggleDone, que deve inverter o boolean completed
-
     if (!title) {
         throw new Error("Task need a required parameter: title")
     }
