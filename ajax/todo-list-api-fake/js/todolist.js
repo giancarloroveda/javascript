@@ -66,3 +66,33 @@ function clickedUl(e) {
 }
 
 ul.addEventListener("click", clickedUl);
+
+// códigos exemplo
+
+fetch("http://localhost:3000/users/")
+    .then((resposta) => {
+        if (!resposta.ok) {
+            throw Error(resposta.status + ": " + resposta.statusText);
+        }
+        return resposta;
+    })
+    .then((respossta) => respossta.json())
+    .then((resposta) => console.log(resposta))
+    .catch((err) => console.log(err.message))
+    .finally(() => console.log("finally"));
+
+(async function () {
+    let users = [];
+
+    try {
+        await fetch("http://localhost:3002/users/")
+            .then((resposta) => resposta.json())
+            .then((_users) => {
+                console.log(_users);
+                users = _users;
+            });
+    } catch (e) {
+        console.log(e.message);
+    }
+    console.log(users);
+})();

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Curso Javascript Completo</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+    </head>
+
+    <body>
+        <div id="bs-feedback" class="alert alert-warning alert-dismissible" role="alert">
+            <span class="content"></span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">X</button>
+        </div>
+
+        <div class="container">
+            <h1>Digite um CEP</h1>
+
+            <form>
+                <div class="form-group">
+                    <label class="control-label" for="inputCEP">CEP</label>
+                    <div class="controls">
+                        <input class="form-control" type="text" id="inputCEP" placeholder="xxxxx-xxx" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="inputLogradouro">Logradouro</label>
+                    <div class="controls">
+                        <input class="form-control" type="text" id="inputLogradouro" placeholder="Logradouro" />
+                        <input class="form-control" type="number" id="inputNumero" placeholder="Numero" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="inputBairro">Bairro</label>
+                    <div class="controls">
+                        <input class="form-control" type="text" id="inputBairro" placeholder="Bairro" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="inputCidade">Cidade</label>
+                    <div class="controls">
+                        <input class="form-control" type="text" id="inputCidade" placeholder="Cidade" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="inputEstado">Estado</label>
+                    <div class="controls">
+                        <input class="form-control" type="text" id="inputEstado" placeholder="Estado" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+
+    <script>
+        // URL: https://viacep.com.br/ws/03133000/json/
+        const form = document.querySelector(".container form");
+        const inputCEP = form.querySelector("#inputCEP");
+        const inputLogradouro = form.querySelector("#inputLogradouro");
+        const inputNumero = form.querySelector("#inputNumero");
+        const inputBairro = form.querySelector("#inputBairro");
+        const inputCidade = form.querySelector("#inputCidade");
+        const inputEstado = form.querySelector("#inputEstado");
+
+        inputCEP.addEventListener("input", function (e) {
+            const inputValue = inputCEP.value;
+
+            const cep = inputValue.split("-").join("");
+
+            if (parseInt(cep).toString().length !== 8) {
+                limparInputs();
+                return;
+            }
+
+            fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                .then((response) => response.json())
+                .then((response) => {
+                    if (response.erro) {
+                        mostrarErro(new Error("CEP inexistente"));
+                        return;
+                    }
+                    popularInputs(response);
+                })
+                .catch((error) => console.log(error));
+        });
+
+        function popularInputs({ logradouro, bairro, localidade, uf }) {
+            inputLogradouro.value = logradouro;
+            inputBairro.value = bairro;
+            inputCidade.value = localidade;
+            inputEstado.value = uf;
+        }
+
+        function limparInputs() {
+            inputLogradouro.value = "";
+            inputBairro.value = "";
+            inputCidade.value = "";
+            inputEstado.value = "";
+        }
+
+        function mostrarErro(erro) {
+            const divAlert = document.querySelector("#bs-feedback");
+            const spanText = divAlert.querySelector(".content");
+            spanText.innerText = erro.message;
+            divAlert.setAttribute("style", "transform: translateY(0px)");
+        }
+
+        const btnFecharAlerta = document.querySelector(".close").addEventListener("click", function (e) {
+            const divAlert = document.querySelector("#bs-feedback");
+            divAlert.removeAttribute("style");
+        });
+    </script>
+</html>

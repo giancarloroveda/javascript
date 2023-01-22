@@ -1,4 +1,4 @@
-import { createPromise } from "../createPromisse.js";
+import { createFetch } from "../createFetch.js";
 import { Task } from "../Model/Task.model.js";
 import { urlUsers, urlTasks } from "../config.js";
 
@@ -8,18 +8,14 @@ export default class TasksService {
     }
 
     add(task, cb, error, userId) {
-        createPromise("POST", `${urlUsers}/${userId}/tasks`, JSON.stringify(task))
+        createFetch("POST", `${urlUsers}/${userId}/tasks`, JSON.stringify(task))
             .then(() => this.getTasks(userId))
             .then(() => cb())
             .catch((erro) => error(erro.message));
     }
 
-    getTasks(userId, success, error) {
+    async getTasks(userId, success, error) {
         const fn = (dados) => {
-            if (dados.error) {
-                return;
-            }
-
             this.tasks = dados.map((task) => {
                 const { title, completed, createdAt, updatedAt, id } = task;
                 return new Task(title, completed, createdAt, updatedAt, id);
@@ -29,7 +25,7 @@ export default class TasksService {
             return this.tasks;
         };
 
-        return createPromise("GET", `${urlUsers}/${userId}/tasks`)
+        return createFetch("GET", `${urlUsers}/${userId}/tasks`)
             .then((response) => {
                 return fn(response);
             })
@@ -42,14 +38,14 @@ export default class TasksService {
     }
 
     remove(id, cb, error, userId) {
-        createPromise("DELETE", `http://localhost:3000/tasks/${id}`)
+        createFetch("DELETE", `http://localhost:3000/tasks/${id}`)
             .then(() => this.getTasks(userId))
             .then(() => cb())
             .catch((erro) => error(erro.message));
     }
 
     edit(task, cb, error, userId) {
-        createPromise("PATCH", `${urlTasks}/${task.id}`, JSON.stringify(task))
+        createFetch("PATCH", `${urlTasks}/${task.id}`, JSON.stringify(task))
             .then(() => this.getTasks(userId))
             .then(() => cb())
             .catch((erro) => error(erro.message));
