@@ -1,24 +1,51 @@
-import { Task } from "../Model/Task.model.js"
+import { Task } from "../Model/Task.model.js";
+import { userId } from "../config.js";
 
-export default class TasksController{
-    constructor(view, service){
-        this.view = view
-        this.service = service
+export default class TasksController {
+    constructor(view, service) {
+        this.view = view;
+        this.service = service;
     }
 
-    add(title, userId) {
-        this.service.add(new Task(title), () => this.view.render(this.service.tasks), userId)
+    add(title) {
+        this.service.add(
+            new Task(title),
+            () => this.view.render(this.service.tasks),
+            (error) => alert(error),
+            userId
+        );
     }
 
-    remove(id, userId){
-        this.service.remove(id, () => this.view.render(this.service.tasks), userId)
+    remove(id) {
+        this.service.remove(
+            id,
+            () => this.view.render(this.service.tasks),
+            (error) => alert(error),
+            userId
+        );
     }
 
-    edit(id, userId, newTitle) {
-        this.service.edit(id,userId, newTitle, () => this.view.render(this.service.tasks))
+    edit(task) {
+        task.updatedAt = Date.now();
+        this.service.edit(
+            task,
+            () => this.view.render(this.service.tasks),
+            (error) => alert(error),
+            userId
+        );
     }
 
-    toggleCheckBtn(id, userId) {
-        this.service.toggleCheckBtn(id, () => this.view.render(this.service.tasks), userId)
+    toggleDone(id) {
+        const task = this.service.getTaskById(parseInt(id));
+        const { completed } = task;
+        this.edit({ completed: !completed, id: parseInt(id) }, userId);
+    }
+
+    getTasks() {
+        this.service.getTasks(
+            userId,
+            () => this.view.render(this.service.tasks),
+            (error) => alert(error)
+        );
     }
 }

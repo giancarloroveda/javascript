@@ -13,3 +13,5 @@ console.log(new Date(1969, 4, 11, 6, 30, 20, 8)) // ano, mês, dia, hora, minuto
 // o valor da constante data foi setado na hora em que ela foi definida, e pode ser mudado utilizando metodos do tipo setDay,
 // todos os metodos apresentados acima tem sua "versão set".
 
+
+
