@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            let str = "hoje é 26/02/2018 e amanha será 27/02/18. Meu aniversario é 1/01";
+            const meses = [
+                "janeiro",
+                "fevereiro",
+                "março",
+                "abrirl",
+                "maio",
+                "junho",
+                "julho",
+                "agosto",
+                "setembro",
+                "outubro",
+                "novembro",
+                "dezembro",
+            ];
+
+            const regexData = /(\d{1,2})\/(\d{1,2})(?:\/(\d{2,4}))?/g;
+            const arr = str.match(regexData);
+
+            console.log(
+                str.replaceAll(regexData, function (str, dia, mes, ano, index) {
+                    if (ano) {
+                        if (ano.length === 2) {
+                            ano = parseInt(ano) > new Date().getFullYear() - 2000 ? `de 19${ano}` : `de 20${ano}`;
+                        }
+                    }
+
+                    return `${dia} de ${meses[--mes]} ${ano ? ano : ""}`;
+                })
+            );
+        </script>
+    </body>
+</html>
