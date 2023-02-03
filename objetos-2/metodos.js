@@ -1,6 +1,6 @@
 const pai = {
     nome: 'pai',
-    falar: function(msg){
+    falar: function (msg) {
         console.log(`${this.nome} está falando: ${msg}`)
     }
 }
@@ -26,14 +26,14 @@ const obj2 = {
 
 Object.defineProperties(obj2, {
     naoEnumeravel: {
-        value:'nao enumeravel'
+        value: 'nao enumeravel'
     },
     enumeravel: {
         value: 'enumeravel',
         enumerable: true
     }
-    
-    
+
+
 })
 
 // const filha = Object.assign(obj1, filho, obj2)
@@ -47,8 +47,8 @@ obj1.d = 'd'
 console.log(clone)
 // console.log(filha)
 
-const obj3 = {...obj1, ...obj2}
-const obj4 = {...obj2, ...obj1}
+const obj3 = { ...obj1, ...obj2 }
+const obj4 = { ...obj2, ...obj1 }
 
 obj1.e = 'e'
 
