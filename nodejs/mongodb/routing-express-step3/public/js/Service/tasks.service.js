@@ -46,7 +46,6 @@ export default class TasksService {
     }
 
     edit(task, cb, error, userId) {
-        console.log(task._id)
         createFetch("PATCH", `${urlTasks}/${task._id}`, JSON.stringify(task))
             .then(() => this.getTasks(userId))
             .then(() => cb())

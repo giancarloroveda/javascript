@@ -26,7 +26,6 @@ export default class TasksController {
     }
 
     edit(task) {
-        console.log(task._id)
         task.updatedAt = Date.now();
         this.service.edit(
             task,
