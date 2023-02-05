@@ -36,7 +36,7 @@ exports.post = async (req, res) => {
 
 exports.getById = async (req, res) => {
     try {
-        let task = await repository.get(parseInt(req.params.id))
+        let task = await repository.get(req.params.id)
         if (task) {
             res.status(200).send(task)
         } else {
@@ -51,12 +51,14 @@ exports.getById = async (req, res) => {
 exports.put = async (req, res) => {
     const { title, completed, createdAt, userId } = req.body
     const updatedAt = Date.now()
-    let id = parseInt(req.params.id)
-    const newTask = { title, completed, createdAt, updatedAt, id, userId }
+    let id = req.params.id
+    const newTask = { title, completed, createdAt, updatedAt, userId }
     const values = Object.values(newTask)
+
     if (values.some(value => value === undefined)) {
         return res.status(400).send({ message: "error 400", err: "Requisição inválida." })
     }
+
     try {
         const data = await repository.put(id, newTask)
         if (data) {
